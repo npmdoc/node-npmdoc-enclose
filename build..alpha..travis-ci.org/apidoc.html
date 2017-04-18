@@ -1,0 +1,426 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/igorklopov/enclose"
+
+    >enclose (v2.2.0)</a>
+</h1>
+<h4>Compile your Node.js project into an executable</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.enclose">module enclose</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.enclose.arch">
+            function <span class="apidocSignatureSpan">enclose.</span>arch
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.enclose.argsToObject">
+            function <span class="apidocSignatureSpan">enclose.</span>argsToObject
+            <span class="apidocSignatureSpan">(args)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.enclose.downloads">
+            function <span class="apidocSignatureSpan">enclose.</span>downloads
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.enclose.exec">
+            function <span class="apidocSignatureSpan">enclose.</span>exec
+            <span class="apidocSignatureSpan">(args, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.enclose.objectToArgs">
+            function <span class="apidocSignatureSpan">enclose.</span>objectToArgs
+            <span class="apidocSignatureSpan">(argo)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.enclose.exec">module enclose.exec</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.enclose.exec.exec">
+            function <span class="apidocSignatureSpan">enclose.</span>exec
+            <span class="apidocSignatureSpan">(args, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.enclose.exec.sync">
+            function <span class="apidocSignatureSpan">enclose.exec.</span>sync
+            <span class="apidocSignatureSpan">(args, inspect)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.enclose" id="apidoc.module.enclose">module enclose</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.enclose.arch" id="apidoc.element.enclose.arch">
+        function <span class="apidocSignatureSpan">enclose.</span>arch
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function getArch() {
+  var arch = process.arch;
+  if (arch === &#x22;ia32&#x22;) arch = &#x22;x86&#x22;;
+  if (arch === &#x22;arm&#x22;) arch = getArmArch();
+  return arch;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.enclose.argsToObject" id="apidoc.element.enclose.argsToObject">
+        function <span class="apidocSignatureSpan">enclose.</span>argsToObject
+        <span class="apidocSignatureSpan">(args)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function argsToObject(args) {
+  var o = { other: [] };
+  for (var i = 0; i &#x3c; args.length;) {
+    var n = args[i];
+    if (i + 1 &#x3c; args.length) {
+      var v = args[i + 1];
+      if (n === &#x22;-a&#x22; || n === &#x22;--arch&#x22;) {
+        o.arch = v;
+        i += 2;
+        continue;
+      }
+      if (n === &#x22;-v&#x22; || n === &#x22;--version&#x22;) {
+        o.version = v;
+        i += 2;
+        continue;
+      }
+      if (n === &#x22;-l&#x22; || n === &#x22;--loglevel&#x22;) {
+        o.loglevel = v;
+        i += 2;
+        continue;
+      }
+    }
+    o.other.push(n);
+    i += 1;
+  }
+  return o;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.enclose.downloads" id="apidoc.element.enclose.downloads">
+        function <span class="apidocSignatureSpan">enclose.</span>downloads
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function downloads() {
+
+  var arch = getArch();
+
+  var suffixes = {
+    x86: [ &#x22;x86&#x22; ],
+    x64: [ &#x22;x86&#x22;, &#x22;x64&#x22; ],
+    armv6: [ &#x22;armv6&#x22; ],
+    armv7: [ &#x22;armv6&#x22;, &#x22;armv7&#x22; ]
+  }[arch].map(getSuffix);
+
+  if (!suffixes) {
+    throw new Error(
+      &#x22;Unknown arch &#x22; + arch
+    );
+  }
+
+  var items = [];
+
+  children(binariesJson, function(suffix, key) {
+    if (suffixes.indexOf(key) &#x3c; 0) return; // *****
+    children(suffix, function(version) {
+      if (typeof version !== &#x22;object&#x22;) return; // &#x22;default&#x22; string
+      children(version, function(binary) {
+        items.push(binary);
+      });
+    });
+  });
+
+  return items;
+
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var parse = require(&#x22;url&#x22;).parse;
+var format = require(&#x22;url&#x22;).format;
+var crypto = require(&#x22;crypto&#x22;);
+var https = require(&#x22;https&#x22;);
+var async = require(&#x22;async&#x22;);
+var windows = process.platform === &#x22;win32&#x22;;
+var enclose = require(&#x22;./bin/enclose.js&#x22;);
+var downloads = enclose.<span class="apidocCodeKeywordSpan">downloads</span>();
+var bucket = &#x22;https://enclosejs.s3.amazonaws.com&#x22;;
+
+process.stdout.write(&#x22;Downloading precompiled binaries. Please wait ...\n&#x22;);
+
+async.mapSeries(downloads, function(download, cb) {
+
+var name = download.name;
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.enclose.exec" id="apidoc.element.enclose.exec">
+        function <span class="apidocSignatureSpan">enclose.</span>exec
+        <span class="apidocSignatureSpan">(args, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">exec = function (args, cb) {
+
+  if (!cb) {
+    cb = function(error) {
+      if (error) throw error;
+    };
+  }
+
+  if (!args) args = [];
+  var binary;
+
+  try {
+    binary = getBinaryFromArgs(args);
+  } catch (error) {
+    return cb(error);
+  }
+
+  var full = path.join(
+    __dirname,
+    binary.enclose.name
+  );
+
+  var opts = { stdio: &#x22;inherit&#x22; };
+  var c = spawn(full, args, opts);
+  var counter = 0;
+
+  c.on(&#x22;error&#x22;, function(error) {
+    assert(++counter === 0);
+    try {
+      handleSpawnError(error, full, binary);
+    } catch (error2) {
+      return cb(error2);
+    }
+  });
+
+  c.on(&#x22;exit&#x22;, function(status) {
+    if (counter) return;
+    cb(null, status);
+  });
+
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.enclose.objectToArgs" id="apidoc.element.enclose.objectToArgs">
+        function <span class="apidocSignatureSpan">enclose.</span>objectToArgs
+        <span class="apidocSignatureSpan">(argo)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function objectToArgs(argo) {
+  var s = argo.other.slice();
+  if (argo.arch) s.push(&#x22;-a&#x22;, argo.arch);
+  if (argo.version) s.push(&#x22;-v&#x22;, argo.version);
+  if (argo.loglevel) s.push(&#x22;-l&#x22;, argo.loglevel);
+  return s;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.enclose.exec" id="apidoc.module.enclose.exec">module enclose.exec</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.enclose.exec.exec" id="apidoc.element.enclose.exec.exec">
+        function <span class="apidocSignatureSpan">enclose.</span>exec
+        <span class="apidocSignatureSpan">(args, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">exec = function (args, cb) {
+
+  if (!cb) {
+    cb = function(error) {
+      if (error) throw error;
+    };
+  }
+
+  if (!args) args = [];
+  var binary;
+
+  try {
+    binary = getBinaryFromArgs(args);
+  } catch (error) {
+    return cb(error);
+  }
+
+  var full = path.join(
+    __dirname,
+    binary.enclose.name
+  );
+
+  var opts = { stdio: &#x22;inherit&#x22; };
+  var c = spawn(full, args, opts);
+  var counter = 0;
+
+  c.on(&#x22;error&#x22;, function(error) {
+    assert(++counter === 0);
+    try {
+      handleSpawnError(error, full, binary);
+    } catch (error2) {
+      return cb(error2);
+    }
+  });
+
+  c.on(&#x22;exit&#x22;, function(status) {
+    if (counter) return;
+    cb(null, status);
+  });
+
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.enclose.exec.sync" id="apidoc.element.enclose.exec.sync">
+        function <span class="apidocSignatureSpan">enclose.exec.</span>sync
+        <span class="apidocSignatureSpan">(args, inspect)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">sync = function (args, inspect) {
+
+  if (!args) args = [];
+  var binary = getBinaryFromArgs(args);
+
+  var full = path.join(
+    __dirname,
+    binary.enclose.name
+  );
+
+  var stdio = inspect || &#x22;inherit&#x22;;
+  var opts = { stdio: stdio };
+  var c = spawnSync(full, args, opts);
+  var error = c.error;
+
+  if (error) {
+    return handleSpawnError(error, full, binary);
+  }
+
+  return inspect ? c : c.status;
+
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
