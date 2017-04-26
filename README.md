@@ -1,6 +1,6 @@
 # npmdoc-enclose
 
-#### api documentation for  [enclose (v2.2.0)](https://github.com/igorklopov/enclose)  [![npm package](https://img.shields.io/npm/v/npmdoc-enclose.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-enclose) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-enclose.svg)](https://travis-ci.org/npmdoc/node-npmdoc-enclose)
+#### basic api documentation for  [enclose (v2.2.0)](https://github.com/igorklopov/enclose)  [![npm package](https://img.shields.io/npm/v/npmdoc-enclose.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-enclose) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-enclose.svg)](https://travis-ci.org/npmdoc/node-npmdoc-enclose)
 
 #### Compile your Node.js project into an executable
 
